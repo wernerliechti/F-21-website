@@ -1,10 +1,12 @@
 :root {
-  --bg: #0e0e0e;
-  --surface: #141414;
+  --bg: #0b0b0b;
+  --surface: #121212;
+  --surface-soft: #171717;
   --text: #f4f1ea;
-  --muted: #c7c2b6;
+  --muted: #cdc7bc;
   --accent: #f7931a;
   --line: #2a2a2a;
+  --radius: 18px;
 }
 
 * {
@@ -15,7 +17,9 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(247, 147, 26, 0.06), transparent 30%),
+    var(--bg);
   color: var(--text);
   font-family: "Inter", Arial, sans-serif;
   line-height: 1.6;
@@ -27,8 +31,12 @@ img {
 }
 
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 2rem);
   position: relative;
+  margin: 1rem auto 0;
+  width: min(100% - 2rem, 1100px);
+  border-radius: calc(var(--radius) + 6px);
+  overflow: hidden;
   padding: 2rem clamp(1.25rem, 3vw, 3rem);
   display: flex;
   flex-direction: column;
@@ -38,13 +46,14 @@ img {
     radial-gradient(circle at 72% 26%, rgba(247, 147, 26, 0.14), transparent 28%),
     url("images/work-1.png");
   background-size: cover;
-  background-position: center;
+  background-position: center 35%;
+  border: 1px solid var(--line);
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(244, 241, 234, 0.08);
+  border: 1px solid rgba(244, 241, 234, 0.12);
   pointer-events: none;
 }
 
@@ -65,8 +74,10 @@ img {
 .nav-link {
   color: var(--text);
   text-decoration: none;
-  border-bottom: 1px solid rgba(244, 241, 234, 0.35);
-  padding-bottom: 0.2rem;
+  border: 1px solid rgba(244, 241, 234, 0.26);
+  background: rgba(7, 7, 7, 0.45);
+  border-radius: 999px;
+  padding: 0.48rem 0.92rem;
   font-size: 0.95rem;
 }
 
@@ -79,9 +90,20 @@ img {
 
 .sub-main {
   max-width: 50ch;
-  margin: 0;
+  margin: 0 0 1.35rem;
   color: #ddd6ca;
   font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.cta-button {
+  display: inline-block;
+  color: #101010;
+  background: var(--accent);
+  border: 1px solid #f7a94d;
+  border-radius: 999px;
+  text-decoration: none;
+  padding: 0.78rem 1.24rem;
+  font-weight: 500;
 }
 
 h1,
@@ -103,10 +125,12 @@ h2 {
 }
 
 .section {
-  width: min(100% - 2.5rem, 72rem);
-  margin: 0 auto;
-  padding: clamp(4rem, 8vw, 7rem) 0;
-  border-bottom: 1px solid var(--line);
+  width: min(100% - 2rem, 980px);
+  margin: 1rem auto 0;
+  padding: clamp(2.5rem, 6vw, 4rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0));
 }
 
 .section p {
@@ -145,6 +169,7 @@ h2 {
   background: var(--surface);
   aspect-ratio: 4 / 5;
   overflow: hidden;
+  border-radius: 14px;
 }
 
 .gallery img {
@@ -205,9 +230,10 @@ input,
 textarea {
   width: 100%;
   border: 1px solid #3a3a3a;
-  background: #121212;
+  background: var(--surface-soft);
   color: var(--text);
   padding: 0.8rem 0.9rem;
+  border-radius: 12px;
 }
 
 input:focus,
@@ -220,18 +246,19 @@ button {
   width: fit-content;
   margin-top: 0.8rem;
   border: 1px solid var(--accent);
-  background: transparent;
-  color: var(--text);
+  background: var(--accent);
+  color: #111;
   padding: 0.72rem 1.4rem;
   cursor: pointer;
+  border-radius: 999px;
 }
 
 button:hover {
-  background: rgba(247, 147, 26, 0.12);
+  filter: brightness(1.05);
 }
 
 .footer {
-  padding: 2.2rem 1.25rem 3rem;
+  padding: 2.2rem 1.25rem 2.4rem;
   text-align: center;
   color: #8f8a80;
   font-size: 0.9rem;
@@ -265,6 +292,8 @@ button:hover {
 @media (max-width: 640px) {
   .hero {
     padding-top: 1.4rem;
+    width: calc(100% - 1rem);
+    min-height: 88vh;
   }
 
   .work .gallery {
@@ -272,6 +301,7 @@ button:hover {
   }
 
   .section {
-    width: min(100% - 1.6rem, 72rem);
+    width: min(100% - 1rem, 980px);
+    padding: 1.5rem 1rem;
   }
 }
