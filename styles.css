@@ -218,10 +218,61 @@ h2 {
 .form-success {
   background: rgba(76, 175, 80, 0.1);
   color: #4caf50;
-  padding: 1rem 1.2rem;
+  padding: 1.5rem 1.5rem;
   border-radius: 12px;
   border: 1px solid rgba(76, 175, 80, 0.2);
   font-family: 'Inter', sans-serif;
+}
+
+.form-success h3 {
+  margin: 0 0 0.5rem 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.form-success p {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.bitcoin-widget {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  background: rgba(247, 147, 26, 0.08);
+  border: 1px solid rgba(247, 147, 26, 0.2);
+  border-radius: 8px;
+}
+
+.btc-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.btc-label {
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+}
+
+.btc-value {
+  font-weight: 600;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: #f7931a;
+}
+
+.btc-subtext {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.btc-subtext p {
+  margin: 0;
 }
 
 .form-error {

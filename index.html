@@ -127,7 +127,19 @@
       
       <div class="form-messages">
         <div data-fs-success class="form-success" style="display: none;">
-          <p>Thank you for your inquiry! I'll respond within 24 hours.</p>
+          <h3>Thank you for your inquiry!</h3>
+          <p>I will get in contact with you in the next 24 hours.</p>
+          <p>In the meantime, check current Bitcoin price and imagine your wedding investment growing:</p>
+          
+          <div class="bitcoin-widget">
+            <div class="btc-price">
+              <span class="btc-label">₿ Bitcoin</span>
+              <span class="btc-value" id="btc-price">Loading...</span>
+            </div>
+            <div class="btc-subtext">
+              <p>Since 2017: Sound money for sound memories</p>
+            </div>
+          </div>
         </div>
         <div data-fs-error class="form-error" style="display: none;"></div>
       </div>
@@ -166,7 +178,32 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-      formspree('initForm', { formElement: '#contact-form', formId: 'mrerldan' });
+      formspree('initForm', { 
+        formElement: '#contact-form', 
+        formId: 'mrerldan',
+        onSuccess: function() {
+          // Fetch Bitcoin price when form is successfully submitted
+          fetchBitcoinPrice();
+        }
+      });
+      
+      // Bitcoin price fetcher
+      async function fetchBitcoinPrice() {
+        try {
+          const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+          const data = await response.json();
+          const price = data.bitcoin.usd;
+          const formattedPrice = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0
+          }).format(price);
+          
+          document.getElementById('btc-price').textContent = formattedPrice;
+        } catch (error) {
+          document.getElementById('btc-price').textContent = 'Price unavailable';
+        }
+      }
     });
   </script>
   <script src="script.js"></script>
