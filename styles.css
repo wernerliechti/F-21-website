@@ -213,7 +213,7 @@ h2 {
 /* Packages Section */
 .packages-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -361,7 +361,70 @@ h2 {
   background: var(--accent);
 }
 
-@media (max-width: 900px) {
+/* FAQ Section */
+.faq-container {
+  max-width: 800px;
+  margin: 2rem auto 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid #3a3a3a;
+  margin-bottom: 0.5rem;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.faq-question:hover {
+  color: var(--accent);
+}
+
+.faq-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  transition: transform 0.2s ease, color 0.2s ease;
+  color: var(--accent);
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0;
+}
+
+.faq-answer.active {
+  max-height: 200px;
+  padding-bottom: 1.5rem;
+}
+
+.faq-answer p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 1024px) {
   .packages-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -369,6 +432,11 @@ h2 {
   
   .package {
     padding: 1.5rem 1.2rem;
+  }
+  
+  .faq-question {
+    font-size: 1rem;
+    padding: 1.2rem 0;
   }
 }
 
