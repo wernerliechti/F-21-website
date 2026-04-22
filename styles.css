@@ -66,6 +66,37 @@ img {
   align-items: center;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+/* Internal Links */
+.section a:not(.button-primary):not(.package-btn):not(.nav-link) {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.section a:not(.button-primary):not(.package-btn):not(.nav-link):hover {
+  border-bottom-color: var(--accent);
+}
+
 .brand {
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -437,6 +468,20 @@ h2 {
   .faq-question {
     font-size: 1rem;
     padding: 1.2rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.85rem;
+  }
+  
+  .nav-link:not(.button-primary) {
+    display: none;
   }
 }
 
