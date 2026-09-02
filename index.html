@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E10NX8TVQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-E10NX8TVQ5');
+</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bitcoin Wedding Photography Switzerland | Privacy-First F-21</title>
@@ -532,6 +539,10 @@
             // Show success message
             form.style.display = 'none';
             successDiv.style.display = 'block';
+            gtag('event', 'generate_lead', {
+              event_category: 'contact_form',
+              event_label: 'wedding_inquiry'
+            });
           } else {
             throw new Error('Form submission failed');
           }
